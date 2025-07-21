@@ -85,3 +85,4 @@ Before submitting any code, please run the following security checks:
    ```bash
    safety scan
    ```
+   首次同步
