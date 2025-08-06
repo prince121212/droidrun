@@ -208,7 +208,7 @@ class DroidRunCLI(click.Group):
 @click.option(
     "--provider",
     "-p",
-    help="LLM provider (OpenAI, Ollama, Anthropic, GoogleGenAI, DeepSeek)",
+    help="LLM provider (OpenAI, Ollama, Anthropic, GoogleGenAI, DeepSeek, ModelScope)",
     default="GoogleGenAI",
 )
 @click.option(
@@ -283,7 +283,7 @@ def cli(
 @click.option(
     "--provider",
     "-p",
-    help="LLM provider (OpenAI, Ollama, Anthropic, GoogleGenAI, DeepSeek)",
+    help="LLM provider (OpenAI, Ollama, Anthropic, GoogleGenAI, DeepSeek, ModelScope)",
     default="GoogleGenAI",
 )
 @click.option(

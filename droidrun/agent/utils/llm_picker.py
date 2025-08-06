@@ -32,6 +32,18 @@ def load_llm(provider_name: str, **kwargs: Any) -> LLM:
     if provider_name == "OpenAILike":
         module_provider_part = "openai_like"
         kwargs.setdefault("is_chat_model", True)
+    elif provider_name == "ModelScope":
+        # ModelScope使用OpenAI兼容的API
+        module_provider_part = "openai_like"
+        provider_name = "OpenAILike"  # 重新映射到OpenAILike类
+        kwargs.setdefault("is_chat_model", True)
+        # 设置ModelScope的默认配置
+        if not kwargs.get("api_base") and not kwargs.get("base_url"):
+            kwargs["api_base"] = "https://api-inference.modelscope.cn/v1"
+        if not kwargs.get("api_key"):
+            kwargs["api_key"] = "ms-3d98807d-54de-4c4b-93c2-38d79c93f004"
+        if not kwargs.get("model"):
+            kwargs["model"] = "Qwen/Qwen3-235B-A22B-Instruct-2507"
     elif provider_name == "GoogleGenAI":
         module_provider_part = "google_genai"
     else:
@@ -146,3 +158,16 @@ if __name__ == "__main__":
         print(f"Model: {openai_llm.metadata}")
     except Exception as e:
         print(f"Failed to load OpenAI: {e}")
+
+    # Example 5: Load ModelScope (魔搭) - 使用OpenAI兼容API
+    print("\n--- Loading ModelScope ---")
+    try:
+        modelscope_llm = load_llm(
+            "ModelScope",
+            model="Qwen/Qwen3-235B-A22B-Instruct-2507",
+            temperature=0.2,
+        )
+        print(f"Loaded LLM: {type(modelscope_llm)}")
+        print(f"Model: {modelscope_llm.metadata}")
+    except Exception as e:
+        print(f"Failed to load ModelScope: {e}")

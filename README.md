@@ -94,3 +94,5 @@ Before submitting any code, please run the following security checks:
    safety scan
    ```
    首次同步
+
+   droidrun "打开小红书搜大耳朵图图" --provider ModelScope --model "Qwen/Qwen3-235B-A22B-Instruct-2507"
