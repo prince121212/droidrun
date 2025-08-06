@@ -22,34 +22,3 @@ messages_log.json
 patch_apis.py
 .git
 .arize-phoenix
-
-# 云端化改造新增忽略项
-.env
-.env.local
-.env.production
-.env.staging
-
-# 服务器相关
-logs/
-temp/
-uploads/
-screenshots/
-
-# 数据库
-*.db
-*.sqlite
-*.sqlite3
-
-# 缓存和临时文件
-.cache/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# Docker相关 (预留)
-# docker-compose.override.yml
-# .dockerignore
-
-# 部署相关 (预留)
-# deployment/
-# k8s/
